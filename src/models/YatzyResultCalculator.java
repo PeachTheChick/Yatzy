@@ -4,6 +4,8 @@ package models;
  * Used to calculate the score of throws with 5 dice
  */
 public class YatzyResultCalculator {
+    private Die[] dice;
+    private int[] countRolled = new int[6];
 
     /**
      *
@@ -11,6 +13,11 @@ public class YatzyResultCalculator {
      */
     public YatzyResultCalculator(Die[] dice) {
         //TODO: implement YatzyResultCalculator constructor.
+        this.dice=dice;
+        for (Die die : dice) {
+            countRolled[die.getEyes()-1] ++;
+
+        }
     }
 
     /**
@@ -20,11 +27,16 @@ public class YatzyResultCalculator {
      */
     public int upperSectionScore(int eyes) {
         //TODO: Implement upperSectionScore method.
-        return 0;
+        return countRolled[eyes-1]*eyes;
     }
 
     public int onePairScore() {
         //TODO: implement onePairScore method.
+        for (int i = 5; i >= 0; i--) {
+            if (countRolled[i] >= 2) {
+                return (i+1)*2;
+            }
+        }
         return 0;
     }
 
