@@ -16,7 +16,6 @@ public class YatzyResultCalculator {
         this.dice=dice;
         for (Die die : dice) {
             countRolled[die.getEyes()-1] ++;
-
         }
     }
 
