@@ -25,7 +25,7 @@ public class YatzyGui extends Application {
     private int kastTilbage = 3;
     Label kastTilbagelbl = new Label("kast tilbage " + kastTilbage);
     Button kastTerninger = new Button("Kast terniger");
-    public boolean[] held =  new boolean[5];
+    public boolean[] held = new boolean[5];
 
     private YatzyResultWindow yatzyResultWindow;
 
@@ -58,15 +58,13 @@ public class YatzyGui extends Application {
         txfDice4.setStyle(squareStyle);
         txfDice5.setStyle(squareStyle);
 
-        heldDiceField(txfDice1,0);
-        heldDiceField(txfDice2,1);
-        heldDiceField(txfDice3,2);
-        heldDiceField(txfDice4,3);
-        heldDiceField(txfDice5,4);
+        heldDiceField(txfDice1, 0);
+        heldDiceField(txfDice2, 1);
+        heldDiceField(txfDice3, 2);
+        heldDiceField(txfDice4, 3);
+        heldDiceField(txfDice5, 4);
 
         // Store held points
-
-
 
 
         // Dice Display
@@ -83,7 +81,7 @@ public class YatzyGui extends Application {
         kastTerninger.setOnAction(event -> this.yatzyresultaction());
 
         Button indsætPoint = new Button("åbn point");
-        pane.add(indsætPoint,6,7);
+        pane.add(indsætPoint, 6, 7);
         GridPane.setMargin(indsætPoint, new Insets(10, 10, 0, 10));
         indsætPoint.setOnAction(event -> this.indsætPointAction());
 
@@ -112,15 +110,15 @@ public class YatzyGui extends Application {
         txfDice5.setText(Integer.toString(dice[4].getEyes()));
 
 
-
-            kastTilbage--;
+        kastTilbage--;
         kastTilbagelbl.setText("kast tilbage " + kastTilbage);
-        if (kastTilbage == 0){
+        if (kastTilbage == 0) {
             kastTerninger.setDisable(true);
 
 
         }
     }
+
     // Hold method with Styling / CSS
     public void heldDiceField(TextField textField, int index) {
         textField.setOnMouseClicked(event -> {
@@ -140,6 +138,7 @@ public class YatzyGui extends Application {
             }
         });
     }// Reset dice and non-held points with the same styling
+
     public void resetDie() {
         // Styling / CSS
         String squareStyle = "-fx-min-width: 50px; -fx-min-height: 50px; " +
@@ -147,17 +146,18 @@ public class YatzyGui extends Application {
                 "-fx-alignment: center; -fx-border-color: black; " +
                 "-fx-font-size: 18px;";
         kastTerninger.setDisable(false);
-        {
         // Reset all held states
         for (int i = 0; i < 5; i++) {
-                txfDice1.setText("");
-                txfDice2.setText("");
-                txfDice3.setText("");
-                txfDice4.setText("");
-                txfDice5.setText("");
-            }
+            txfDice1.setText("");
+            txfDice2.setText("");
+            txfDice3.setText("");
+            txfDice4.setText("");
+            txfDice5.setText("");
         }
-
+        for (int i = 0; i < held.length; i++) {
+            held[i] = false;
+            raffleCup.unHoldDice(i);
+        }
         // Set Styling / CSS for all dice
         txfDice1.setStyle(squareStyle);
         txfDice2.setStyle(squareStyle);
