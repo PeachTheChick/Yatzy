@@ -165,23 +165,53 @@ public class YatzyResultWindow extends Stage {
     }
 
     public void setScore(YatzyResultCalculator resultCalculator) {
-        enereText.setText(String.valueOf(resultCalculator.upperSectionScore(1)));
-        toeretext.setText(String.valueOf(resultCalculator.upperSectionScore(2)));
-        treeretext.setText(String.valueOf(resultCalculator.upperSectionScore(3)));
-        fieretext.setText(String.valueOf(resultCalculator.upperSectionScore(4)));
-        femeretext.setText(String.valueOf(resultCalculator.upperSectionScore(5)));
-        sekseretext.setText(String.valueOf(resultCalculator.upperSectionScore(6)));
-
-        etPartext.setText(String.valueOf(resultCalculator.onePairScore()));
-        toppartext.setText(String.valueOf(resultCalculator.twoPairScore()));
-        treEnstext.setText(String.valueOf(resultCalculator.threeOfAKindScore()));
-        fireEnstext.setText(String.valueOf(resultCalculator.fourOfAKindScore()));
-        lilleStraighttext.setText(String.valueOf(resultCalculator.smallStraightScore()));
-        storeStraighttext.setText(String.valueOf(resultCalculator.largeStraightScore()));
-        fuldtHustext.setText(String.valueOf(resultCalculator.fullHouseScore()));
-        chancetext.setText(String.valueOf(resultCalculator.chanceScore()));
-        yatzytext.setText(String.valueOf(resultCalculator.yatzyScore()));
+        if (!heldScores[0]) {
+            enereText.setText(String.valueOf(resultCalculator.upperSectionScore(1)));
+        }
+        if (!heldScores[1]) {
+            toeretext.setText(String.valueOf(resultCalculator.upperSectionScore(2)));
+        }
+        if (!heldScores[2]) {
+            treeretext.setText(String.valueOf(resultCalculator.upperSectionScore(3)));
+        }
+        if (!heldScores[3]) {
+            fieretext.setText(String.valueOf(resultCalculator.upperSectionScore(4)));
+        }
+        if (!heldScores[4]) {
+            femeretext.setText(String.valueOf(resultCalculator.upperSectionScore(5)));
+        }
+        if (!heldScores[5]) {
+            sekseretext.setText(String.valueOf(resultCalculator.upperSectionScore(6)));
+        }
+        if (!heldScores[6]) {
+            etPartext.setText(String.valueOf(resultCalculator.onePairScore()));
+        }
+        if (!heldScores[7]) {
+            toppartext.setText(String.valueOf(resultCalculator.twoPairScore()));
+        }
+        if (!heldScores[8]) {
+            treEnstext.setText(String.valueOf(resultCalculator.threeOfAKindScore()));
+        }
+        if (!heldScores[9]) {
+            fireEnstext.setText(String.valueOf(resultCalculator.fourOfAKindScore()));
+        }
+        if (!heldScores[10]) {
+            lilleStraighttext.setText(String.valueOf(resultCalculator.smallStraightScore()));
+        }
+        if (!heldScores[11]) {
+            storeStraighttext.setText(String.valueOf(resultCalculator.largeStraightScore()));
+        }
+        if (!heldScores[12]) {
+            fuldtHustext.setText(String.valueOf(resultCalculator.fullHouseScore()));
+        }
+        if (!heldScores[13]) {
+            chancetext.setText(String.valueOf(resultCalculator.chanceScore()));
+        }
+        if (!heldScores[1]) {
+            yatzytext.setText(String.valueOf(resultCalculator.yatzyScore()));
+        }
     }
+
     // Method to hold score/point TextFields and stop them from updating
     private void heldScoreField(TextField textField, int index) {
         textField.setOnMouseClicked(event -> {
@@ -199,6 +229,7 @@ public class YatzyResultWindow extends Stage {
             }
         });
     } // Method to reset all fields in the result window except held fields
+
     public void resetResults() {
         for (int i = 0; i < heldScores.length; i++) {
             if (!heldScores[i]) { // Only reset unheld scores
